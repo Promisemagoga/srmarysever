@@ -10,8 +10,8 @@ app.listen(port, () => {
 
 const nodemailer = require('nodemailer');
 
-app.post('/api/forma', (req,res) =>{
-	let data = req.body
+app.post('/send-email', (req,res) =>{
+	let {name, surname,email} = req.body
 	let mailTransporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -23,16 +23,16 @@ app.post('/api/forma', (req,res) =>{
 
 
 let mailDetails = {
-	from: data.email,
+	from: email,
 	to: 'tshegofatsopromise362@gmail.com',
-	subject: `Registration for a learner from ${data.name}`,
+	subject: `Registration for a learner from ${name}`,
 	text: "testing nodemailer if it's working",
     html: `
     <h3>Registration Information</h3>
     <ul>
-    <li> Full Names: ${data.name}</li>
-    <li> Full Surname: ${data.surname}</li>
-    <li> Email: ${data.email}</li>
+    <li> Full Names: ${name}</li>
+    <li> Full Surname: ${surname}</li>
+    <li> Email: ${email}</li>
 
     
     </ul>
