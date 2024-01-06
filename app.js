@@ -23,7 +23,7 @@ app.post('/form', (req, res) => {
 
 
     let mailDetails = {
-        from: 'promisetshegofatsom@gmail.com',
+        from: data.email,
         to: 'tshegofatsopromise362@gmail.com',
         subject: `Registration for a learner from ${data.name}`,
         html: `
